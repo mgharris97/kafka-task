@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: inventory-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: inventory-service
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.example.inventory_service.dto.OrderCreatedEvent
